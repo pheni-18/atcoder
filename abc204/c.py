@@ -17,36 +17,28 @@ def main():
     n, m = inp()
 
     to = [[] for _ in range(n)]
-    end = [[] for _ in range(n)]
-
-    if m == 0:
-        print(n)
-
-    for i in range(m):
+    for _ in range(m):
         a, b = inp()
         a -= 1
         b -= 1
         to[a].append(b)
 
-    def dfs(f, j):
+    def dfs(f):
+        nonlocal ans
+        nonlocal seen
+
+        ans += 1
+        seen[f] = True
+
         for v in to[f]:
-            if v in end[j]:
+            if seen[v]:
                 continue
-
-            if len(end[v]) > 0:
-                end[j].extend(end[v])
-                continue
-
-            end[j].append(v)
-            dfs(v, j)
-
-    for j in range(n):
-        end[j].append(j)
-        dfs(j, j)
+            dfs(v)
 
     ans = 0
     for i in range(n):
-        ans += len(end[i])
+        seen = [False] * n
+        dfs(i)
 
     print(ans)
 
