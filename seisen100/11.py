@@ -1,6 +1,7 @@
-# https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_5_A&lang=ja
+# https://atcoder.jp/contests/abc128/tasks/abc128_c
 
 # [bit全探索]
+
 
 def inp(to_int=True):
     if not type(to_int) == bool:
@@ -18,28 +19,29 @@ def inps(n, to_int=True):
 def main():
     from itertools import product
 
-    n = inp()[0]
-    al = inp()
-    q = inp()[0]
-    ml = inp()
+    n, m = inp()
+    sll = []
+    for i in range(m):
+        l = inp()
+        sll.append(l[1:])
 
-    tott = [False] * 2001
+    pl = inp()
 
+    ans = 0
     for _bit in product((True, False), repeat=n):
         bit = list(_bit)
-        tot = 0
-        for i in range(n):
-            if bit[i]:
-                tot += al[i]
-
-        if 1 <= tot <= 2000:
-            tott[tot] = True
-
-    for m in ml:
-        if tott[m]:
-            print('yes')
+        for i in range(m):
+            tot = 0
+            for s in sll[i]:
+                cur = s - 1
+                if bit[cur]:
+                    tot += 1
+            if tot % 2 != pl[i]:
+                break
         else:
-            print('no')
+            ans += 1
+
+    print(ans)
 
 
 if __name__ == '__main__':
