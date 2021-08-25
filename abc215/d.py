@@ -6,7 +6,37 @@ def inp(to_int=True):
 
 
 def main():
-    pass
+    n, m = inp()
+    al = inp()
+    l = 100001
+    xl = [False] * l
+    for a in al:
+        xl[a] = True
+
+    dl = []
+    for i in range(2, l):
+        flg = False
+        for j in range(i, l, i):
+            if xl[j]:
+                flg = True
+                break
+
+        if flg:
+            dl.append(i)
+
+    okl = [True] * (m + 1)
+    for d in dl:
+        for i in range(d, m + 1, d):
+            okl[i] = False
+
+    ansl = []
+    for i in range(1, m + 1):
+        if okl[i]:
+            ansl.append(i)
+
+    print(len(ansl))
+    for ans in ansl:
+        print(ans)
 
 
 if __name__ == '__main__':
