@@ -6,7 +6,21 @@ def inp(to_int=True):
 
 
 def main():
-    pass
+    import math
+    p = inp()[0]
+    coins = []
+    for i in range(1, 11):
+        x = math.factorial(i)
+        coins.append(x)
+
+    coins = reversed(coins)
+
+    ans = 0
+    for coin in coins:
+        ans += p // coin
+        p %= coin
+
+    print(ans)
 
 
 if __name__ == '__main__':
