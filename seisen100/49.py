@@ -1,3 +1,8 @@
+# https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_2_A&lang=ja
+
+# bitDP
+
+
 def inp(to_int=True):
     if not type(to_int) == bool:
         raise Exception()

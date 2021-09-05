@@ -1,6 +1,6 @@
 # https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1611&lang=jp
 
-# DP
+# 区間DP
 
 # TODO: fix TLE
 
