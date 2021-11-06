@@ -1,3 +1,6 @@
+# 双方向リスト
+
+
 def inp(to_int=True):
     if not type(to_int) == bool:
         raise Exception()
@@ -13,44 +16,36 @@ def inp_one(to_int=True):
 
 
 def main():
-    from collections import deque
-
     n, q = inp()
     queries = [inp() for _ in range(q)]
 
-    check_l = []
+    front = [-1] * n
+    back = [-1] * n
 
     for query in queries:
-        p = query[0]
-        if not p == 3:
-            continue
-
-        x = query[1]
-        check_l.append(x)
-
-    check_s = set(check_l)
-    check_d = {}
-    for c in check_l:
-        check_d[c] = -1
-
-    l = [[i] for i in range(n + 1)]
-    for query in queries:
-        x, y = None, None
-        p = query[0]
-        if p == 1:
-            x, y = query[1:]
-
-        elif p == 2:
-            x, y = query[1:]
-        else:
+        type = query[0]
+        if type == 3:
             x = query[1]
-            p = check_d[x]
-            if p == -1:
-                print(1, x)
+            x -= 1
+            while front[x] != -1:
+                x = front[x]
+            ansl = [str(x + 1)]
+            while back[x] != -1:
+                x = back[x]
+                ansl.append(str(x + 1))
+
+            print(str(len(ansl)) + ' ' + ' '.join(ansl))
+        else:
+            x, y = query[1:]
+            x -= 1
+            y -= 1
+
+            if type == 1:
+                back[x] = y
+                front[y] = x
             else:
-                pass
-
-
+                back[x] = -1
+                front[y] = -1
 
 
 if __name__ == '__main__':
