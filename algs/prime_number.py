@@ -29,3 +29,28 @@ def count_divisors(n: int) -> int:
 
     l = sorted(l)
     return l
+
+
+# 素因数分解
+
+def prime_factorize(n: int) -> list[tuple[int: int]]:
+    l = []
+    m = n
+    for a in range(2, n):
+        if a * a > n:
+            break
+
+        if m % a != 0:
+            continue
+
+        ex = 0
+        while m % a == 0:
+            ex += 1
+            m //= a
+
+        l.append((a, ex))
+
+    if m != 1:
+        l.append((m, 1))
+
+    return l
