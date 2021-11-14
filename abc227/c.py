@@ -13,17 +13,16 @@ def inp_one(to_int=True):
 
 
 def main():
-    N, K = inp()
-    al = inp()
-
-    al = sorted(al)
-    cur1 = N - K
+    N = inp_one()
     ans = 0
-    cur2 = N - 1
-    while True:
-        ans += al[cur1]
-        al[cur2] -= al
+    for a in range(1, 10 ** 4):
+        for b in range(a, 10 ** 6):
+            m = N // (a * b)
+            if m < b:
+                break
+            ans += m - (b - 1)
 
+    print(ans)
 
 
 if __name__ == '__main__':
