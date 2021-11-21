@@ -1,3 +1,8 @@
+# https://atcoder.jp/contests/abc145/tasks/abc145_d
+
+# 逆元
+
+
 def inp(to_int=True):
     if not type(to_int) == bool:
         raise Exception()
