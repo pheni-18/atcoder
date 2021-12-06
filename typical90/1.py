@@ -1,9 +1,6 @@
 # ☆4
 
-# 
-
-
-from re import A
+# 二分探索
 
 
 def inp(to_int=True):
