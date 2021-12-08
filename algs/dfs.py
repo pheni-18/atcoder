@@ -1,6 +1,9 @@
 from icecream import ic
 # 深さ優先探索
 
+import sys
+sys.setrecursionlimit(10 ** 5 + 1)
+
 n = 4
 to = [
     [1],
