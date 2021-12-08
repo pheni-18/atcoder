@@ -1,6 +1,6 @@
 # ☆3
 
-# 
+# bit全探索
 
 
 def inp(to_int=True):
